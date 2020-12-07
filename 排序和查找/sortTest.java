@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 
 /**
@@ -13,7 +14,8 @@ public class sortTest {
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize,maxValue);
             int[] arr2 = copyArray(arr1);
-            insertSort(arr1);
+           // insertSort(arr1);
+            HeapSort.heapSort(arr1);
             Arrays.sort(arr2);
            if (!isEqual(arr1,arr2)) {
                succeed = false;
@@ -25,7 +27,8 @@ public class sortTest {
             System.out.println(succeed);
             int[] arr1 = generateRandomArray(maxSize,maxValue);
             printArray(arr1);
-            selectSort(arr1);
+     //       selectSort(arr1);
+            HeapSort.heapSort(arr1);
             printArray(arr1);
 
     }
