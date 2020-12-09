@@ -19,8 +19,6 @@ public class BSAwesome {
                 return mid;
             }
         }
-        BSAwesome a = new BSAwesome();
-        a.finalize();
         return left;
     }
 }
