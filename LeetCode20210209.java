@@ -142,7 +142,7 @@ public class LeetCode20210209 {
                 cur_arm_len = expand(s, i, i);
             }
             arm_len.add(cur_arm_len);
-            if (i + cur_arm_len > right) { //其实这里的j选取不是最优的，只是i+cur最靠右边的
+            if (i + cur_arm_len > right) {
                 j = i;
                 right = i + cur_arm_len;
             }
