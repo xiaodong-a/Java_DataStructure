@@ -348,8 +348,37 @@ public class LeetCode20210210 {
             return match2(str, ss, pattern, sp + 2);
         } else {
             if (ss == str.length || sp == pattern.length) return false;
-            if (str[ss] == pattern[sp] || pattern[sp] == '.') return match2(str,ss+1,pattern,sp+1);
+            if (str[ss] == pattern[sp] || pattern[sp] == '.') return match2(str, ss + 1, pattern, sp + 1);
             return false;
         }
+    }
+
+    public boolean isMatch2(String s, String p) {
+        char[] str = s.toCharArray();
+        char[] ptr = p.toCharArray();
+        int m = str.length;
+        int n = ptr.length;
+
+        boolean[][] flag = new boolean[m + 1][n + 1];
+        flag[0][0] = true;
+
+        for (int i = 0; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (ptr[j - 1] == '*') {
+                    flag[i][j] = flag[i][j - 2];
+                    if (matchs(str,ptr,i,j-1)) flag[i][j] = flag[i][j]||flag[i-1][j];
+                }else{
+                    if (matchs(str,ptr,i,j)) flag[i][j] = flag[i-1][j-1];
+                }
+            }
+        }
+
+        return flag[m][n];
+    }
+
+    public boolean matchs(char[] s, char[] p, int i, int j) {
+        if (i == 0) return false;
+        if (p[j - 1] == '.') return true;
+        return s[i - 1] == p[j - 1];
     }
 }
