@@ -259,6 +259,90 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 
 
     public List<List<Integer>> threeSum02(int[] nums) {
+        if (nums.length < 3) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] > 0) {
+                return ans;
+            }
+            if (i != 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int k = nums.length - 1;
+            int j = i + 1;
+            while (j < k) {
+                if (nums[i] + nums[j] + nums[k] < 0) {
+                    j++;
+                }
+                else if (nums[i] + nums[j] + nums[k] > 0) {
+                    k--;
+                }
+                else {
+                    List<Integer> line = new ArrayList<>();
+                    line.add(nums[i]);
+                    line.add(nums[j]);
+                    line.add(nums[k]);
+                    ans.add(line);
+                    while (j < k && nums[j] == nums[j + 1]) {
+                        j++;
+                    }
+                    while (j < k && nums[k] == nums[k - 1]) {
+                        k--;
+                    }
+                    j++;
+                    k--;
+                }
+            }
+        }
+        return ans;
+    }
+
+    public List<List<Integer>> threeSum04(int[] nums) {
+        if (nums.length < 3) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] > 0) {
+                return ans;
+            }
+            if (i != 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int k = nums.length - 1;
+            int j = i + 1;
+            while (j < k) {
+                if (nums[i] + nums[j] + nums[k] < 0) {
+                    j++;
+                }
+                else if (nums[i] + nums[j] + nums[k] > 0) {
+                    k--;
+                }
+                else {
+                    List<Integer> line = new ArrayList<>();
+                    line.add(nums[i]);
+                    line.add(nums[j]);
+                    line.add(nums[k]);
+                    ans.add(line);
+                    while (j < k && nums[j] == nums[j + 1]) {
+                        j++;
+                    }
+                    while (j < k && nums[k] == nums[k - 1]) {
+                        k--;
+                    }
+                    j++;
+                    k--;
+                }
+            }
+        }
+        return ans;
+    }
+
+    public List<List<Integer>> threeSum03(int[] nums) {
         if (nums.length < 3) return new ArrayList<>();
         List<List<Integer>> ans = new ArrayList<>();
         Arrays.sort(nums);
@@ -268,9 +352,13 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
             int k = nums.length - 1;
             int j = i + 1;
             while (j < k) {
-                if (nums[i] + nums[j] + nums[k] < 0) j++;
-                else if (nums[i] + nums[j] + nums[k] > 0) k--;
-                else {
+                if (nums[i] + nums[j] + nums[k] < 0) {
+                    while (j < k && nums[j] == nums[j + 1]) j++;
+                    j++;
+                } else if (nums[i] + nums[j] + nums[k] > 0) {
+                    while (j < k && nums[k] == nums[k - 1]) k--;
+                    k--;
+                } else {
                     ArrayList<Integer> line = new ArrayList<>();
                     line.add(nums[i]);
                     line.add(nums[j]);
