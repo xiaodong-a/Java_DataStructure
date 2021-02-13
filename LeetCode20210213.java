@@ -27,7 +27,7 @@ class ListNode {
     }
 }
 
-public class LeetCdde20210213 {
+public class LeetCode20210213 {
     //21. 合并两个有序链表
     public ListNode mergeTwoLists01(ListNode l1, ListNode l2) {
         ListNode ans = new ListNode(0);
@@ -189,4 +189,7 @@ k 是一个正整数，它的值小于或等于链表的长度。
         return pre;
     }
 
+    public static void main(String[] args) {
+        System.out.println(1);
+    }
 }
